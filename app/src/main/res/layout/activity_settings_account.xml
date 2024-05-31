@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    android:clickable="true"
+    android:orientation="vertical"
+    tools:context=".Settings.SettingsAccountActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutName"
+        style="@style/setting_account_linear_layout_style"
+        android:layout_marginTop="40dp"
+        tools:ignore="KeyboardInaccessibleWidget">
+
+        <TextView
+            style="@style/setting_account_text_view_style"
+            android:layout_width="wrap_content"
+            android:paddingStart="20dp"
+            android:text="@string/fullName"
+            android:textColor="@color/mainText"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/settingsAccountTextViewName"
+            style="@style/setting_account_text_view_style"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/arrow_right"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutPassword"
+        style="@style/setting_account_linear_layout_style"
+        android:layout_marginTop="40dp"
+        tools:ignore="KeyboardInaccessibleWidget">
+
+        <TextView
+            style="@style/setting_account_text_view_style"
+            android:layout_width="wrap_content"
+            android:paddingStart="20dp"
+            android:text="@string/changePassword"
+            android:textColor="@color/mainText"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            style="@style/setting_account_text_view_style"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:text=""
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/arrow_right"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+</LinearLayout>
