@@ -58,9 +58,6 @@
             android:name=".Score.ScoreStudentActivity"
             android:exported="false" />
         <activity
-            android:name=".Subject.SubjectExportActivity"
-            android:exported="false" />
-        <activity
             android:name=".Settings.SettingsApplicationActivity"
             android:exported="false" />
         <activity
@@ -71,9 +68,6 @@
             android:exported="false" />
         <activity
             android:name=".Subject.SubjectAddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Classroom.ClassroomExportPreviewActivity"
             android:exported="false" />
         <activity
             android:name=".Subject.SubjectEditActivity"
@@ -89,9 +83,6 @@
             android:exported="false" />
         <activity
             android:name=".Statistic.MarkStatsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Classroom.ClassroomExportActivity"
             android:exported="false" />
         <activity
             android:name=".Classroom.ClassroomUpdateActivity"

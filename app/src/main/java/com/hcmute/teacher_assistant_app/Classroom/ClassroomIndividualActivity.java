@@ -33,11 +33,12 @@ public class ClassroomIndividualActivity extends AppCompatActivity {
         setScreen();
         setEvent();
     }
-
+    // Static method to get an instance of this activity
     public static ClassroomIndividualActivity getmInstanceActivity() {
         return weakActivity.get();
     }
 
+    // Initialize UI controls
     private void setControl() {
         this.studentFamilyName = findViewById(R.id.studentFamilyName);
         this.studentFirstName = findViewById(R.id.studentFirstName);
@@ -52,6 +53,7 @@ public class ClassroomIndividualActivity extends AppCompatActivity {
         this.studentGender = findViewById(R.id.gender);
     }
 
+    // Populate screen with student details passed through intent
     private void setScreen() {
         /*Step 1*/
         Student student = (Student) getIntent().getSerializableExtra("student");
@@ -74,27 +76,33 @@ public class ClassroomIndividualActivity extends AppCompatActivity {
         }
     }
 
+    // Set event listeners for buttons
     private void setEvent() {
+        // Get student object from intent
         Student student = (Student) getIntent().getSerializableExtra("student");
-
+        // Set click listener for delete button
         this.buttonDelete.setOnClickListener(view -> triggerPopupWindow(view, student));
+        // Set click listener for update button to open update activity
         this.buttonUpdate.setOnClickListener(view -> {
             Intent intent = new Intent(ClassroomIndividualActivity.this, ClassroomUpdateActivity.class);
             intent.putExtra("updatedStudent", student);
             startActivity((intent));
         });
+        // Set click listener for go back button to finish the current activity
         this.buttonGoBack.setOnClickListener(view -> {
             finish();
         });
     }
 
 
+    // Show a confirmation popup window for deleting a student
     @SuppressLint("ClickableViewAccessibility")
     private void triggerPopupWindow(View view, Student student) {
+        // Create and configure alert dialog
         Alert alert = new Alert(ClassroomIndividualActivity.this);
         alert.confirm();
         alert.showAlert(R.string.deleteStudent, R.drawable.info_icon);
-
+        // Set click listener for OK button to delete student
         alert.btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +110,7 @@ public class ClassroomIndividualActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        // Set click listener for Cancel button to dismiss the alert dialog
         alert.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +118,7 @@ public class ClassroomIndividualActivity extends AppCompatActivity {
             }
         });
     }
-
+    // Update student details displayed on the screen
     public void updateStudent(Student student) {
         this.studentFamilyName.setText(student.getFamilyName());
         this.studentFirstName.setText(student.getFirstName());

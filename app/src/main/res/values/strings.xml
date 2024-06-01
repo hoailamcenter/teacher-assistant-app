@@ -70,7 +70,7 @@
     <string name="TitleSubject">Danh sách môn học</string>
     <string name="subjectName">Toán</string>
     <string name="subjectHS">Hệ số 2</string>
-    <string name="subjectNKHK">Học kì 1 Năm học 2022-2023</string>
+    <string name="subjectNKHK">Học kì 1 Năm học 2023-2024</string>
     <string name="SubjectTitleInformation">Thông tin môn học</string>
     <string name="AddSubject">Thêm môn học</string>
     <string name="ExportSubject">Xuất danh sách môn học</string>
@@ -82,7 +82,7 @@
     <string name="HK2EditSubject">Học kì 2</string>
     <string name="HSEditSubject">Hệ số</string>
     <string name="NHEditSubject">Năm học</string>
-    <string name="NHEditSubjectex">2022-2023</string>
+    <string name="NHEditSubjectex">2023-2024</string>
     <!--Add Subject-->
     <string name="TitleAddSubject">Thêm môn học</string>
 
@@ -113,7 +113,7 @@
     <string name="TitleEvent">Danh sách sự kiện</string>
     <string name="nameEvent">Họp phụ huynh tổng kết học kỳ</string>
     <string name="place">Địa điểm: Phòng học 305</string>
-    <string name="eventDateTime">07:00 a.m-11:00 a.m 22/03/2022</string>
+    <string name="eventDateTime">07:00 a.m-11:00 a.m 22/03/2024</string>
     <string name="EventTitleInformation">Thông tin sự kiện</string>
     <string name="AddEvent">Thêm sự kiện</string>
     <string name="ExportEvent">Xuất danh sách sự kiện</string>

@@ -34,17 +34,17 @@ public class ClassroomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classroom);
-        weakActivity = new WeakReference<>(ClassroomActivity.this);
-        Session session = new Session(ClassroomActivity.this);
+        weakActivity = new WeakReference<>(ClassroomActivity.this);// Store weak reference to the activity
+        Session session = new Session(ClassroomActivity.this); // Session management
 
         // get all grades
         ArrayList<Grade> gradeObjects = gradeOpenHelper.retrieveAllGrades();
         // get all students
         this.students = studentOpenHelper.retrieveAllStudents();
-        setControl();
+        setControl(); // Initialize UI components
 
-        setEvent();
-        searchByKeyword();
+        setEvent(); // Set up event handlers
+        searchByKeyword(); // Initialize search functionality
 
         String teacherId = session.get("teacherId");
         String value = gradeOpenHelper.retriveIdByTeachId(teacherId);
@@ -56,12 +56,14 @@ public class ClassroomActivity extends AppCompatActivity {
     }
 
     private void setControl() {
+        // Initialize UI components by finding them by ID
         this.listView = findViewById(R.id.classroomListView);
         this.buttonCreation = findViewById(R.id.classroomButtonCreation);
         this.searchView = findViewById(R.id.classroomSearchView);
     }
 
     private void setEvent() {
+        // Set up the adapter and event handlers for the list view and button
         /*Step 1*/
         this.listViewModel = new ClassroomListViewModel(this, R.layout.activity_classroom_element, students);
         this.listView.setAdapter(listViewModel);
@@ -70,7 +72,7 @@ public class ClassroomActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Student student = (Student) adapterView.getAdapter().getItem(position);
-
+                // Start ClassroomIndividualActivity when an item is clicked, passing the student object
                 Intent intent = new Intent(ClassroomActivity.this, ClassroomIndividualActivity.class);
                 intent.putExtra("student", student);
                 startActivity(intent);
@@ -90,7 +92,7 @@ public class ClassroomActivity extends AppCompatActivity {
     public void createStudent(Student student) {
         /* Temporary Solution so as to the Grade Name is null */
         student.setGradeName(this.students.get(0).getGradeName());
-
+        // Add the new student to the list and database
         this.students.add(student);
 
         this.studentOpenHelper.create(student);

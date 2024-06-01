@@ -64,29 +64,37 @@ public class SubjectActivity extends AppCompatActivity {
     }
 
     private void initSearchWidgets() {
+        // Find the SearchView in the layout
         SearchView searchView = findViewById(R.id.searchSubject);
+        // Set a listener for the SearchView to handle text change events
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            // This method is called when the user submits a query
             @Override
             public boolean onQueryTextSubmit(String s) {
+                // Returning false as no action is taken on query submission
                 return false;
             }
-
+            // This method is called whenever the query text changes
             @Override
             public boolean onQueryTextChange(String s) {
+                // Create a new list to hold the filtered subjects
                 ArrayList<Subject> filteredSubject = new ArrayList<Subject>();
-
+                // Loop through all subjects and add the ones that match the search query to the filtered list
                 for (Subject subject : subjects) {
                     if (subject.getTenMH().toLowerCase().trim().contains(s.toLowerCase().trim())) {
-                        filteredSubject.add(subject);
+                        filteredSubject.add(subject);// Add matching subjects to the filtered list
                     }
                 }
+                // Update the ListView with the filtered subjects
                 setFilteredSubject(filteredSubject);
                 return false;
             }
         });
     }
 
+    // This method updates the ListView with the filtered subjects
     private void setFilteredSubject(ArrayList<Subject> filtered) {
+        // Create a new adapter with the filtered subjects and set it to the ListView
         SubjectAdapter subjectAdapter = new SubjectAdapter(this, R.layout.activity_subject_element, filtered);
         this.listView.setAdapter(subjectAdapter);
     }

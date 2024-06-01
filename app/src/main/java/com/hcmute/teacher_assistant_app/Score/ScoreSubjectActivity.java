@@ -43,26 +43,30 @@ public class ScoreSubjectActivity extends AppCompatActivity {
         scoreSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
+                // No action needed on query text submit
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                ArrayList<Subject> filteredSubject = new ArrayList<Subject>();
+                ArrayList<Subject> filteredSubject = new ArrayList<Subject>();// List to hold filtered subjects
+
+                // Filter subjects based on the search query
 
                 for (Subject subject : subjects) {
                     if (subject.getTenMH().toLowerCase().trim().contains(s.toLowerCase().trim())) {
-                        filteredSubject.add(subject);
+                        filteredSubject.add(subject); // Add matching subjects to the filtered list
                     }
                 }
 
-                setFilteredSubject(filteredSubject);
+                setFilteredSubject(filteredSubject); // Update ListView with filtered subjects
                 return false;
             }
         });
     }
 
     private void setFilteredSubject(ArrayList<Subject> filtered) {
+        // Create a new adapter with filtered subjects and set it to the ListView
         ScoreSubjectAdapter subjectAdapter = new ScoreSubjectAdapter(this, R.layout.activity_score_subject_element, filtered);
         listView.setAdapter(subjectAdapter);
     }

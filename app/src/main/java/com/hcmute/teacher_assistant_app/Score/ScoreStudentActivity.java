@@ -159,51 +159,6 @@ public class ScoreStudentActivity extends AppCompatActivity {
         return scoreInfoArrayList;
     }
 
-    private void generatePDF() {
-        PdfDocument pdfDocument = new PdfDocument();
-        Paint title = new Paint();
-
-        PdfDocument.PageInfo mypageInfo = new PdfDocument.PageInfo.Builder(pagewidth, pageHeight, 1).create();
-        PdfDocument.Page myPage = pdfDocument.startPage(mypageInfo);
-        Canvas canvas = myPage.getCanvas();
-        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
-        title.setTextSize(17);
-        title.setColor(ContextCompat.getColor(this, R.color.black));
-        canvas.drawText("Danh sách điểm sinh viên.", 100, 50, title);
-
-        title.setTextSize(15);
-        canvas.drawText("Môn:", 100, 75, title);
-        canvas.drawText("Lớp:", 100, 100, title);
-        canvas.drawText(subject.getTenMH(), 200, 75, title);
-        canvas.drawText(gradeName, 200, 100, title);
-
-        title.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-        title.setColor(ContextCompat.getColor(this, R.color.black));
-        title.setTextSize(15);
-        title.setTextAlign(Paint.Align.CENTER);
-
-        int y = 130;
-        for (ScoreInfo score : scoreInfoArrayList) {
-            if (y >= 1000) {
-                y = 130;
-            }
-            y += 30;
-            canvas.drawText(String.valueOf(score.getStudentID()), 100, y, title);
-            canvas.drawText(String.valueOf(score.getStudentFullName()), 200, y, title);
-            canvas.drawText(String.valueOf(score.getScore()), 700, y, title);
-        }
-        pdfDocument.finishPage(myPage);
-
-        File file = new File(getApplicationContext().getFilesDir(), subject.getMaMH() + "-" + subject.getTenMH() + "-" + gradeName + ".pdf");
-        try {
-            pdfDocument.writeTo(new FileOutputStream(file));
-            Toast.makeText(ScoreStudentActivity.this, "PDF file generated successfully." + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Log.e("GeneratePDF", "PDF file generated successfully" + e.toString());
-            Toast.makeText(ScoreStudentActivity.this, "PDF file generated Failed.", Toast.LENGTH_SHORT).show();
-        }
-        pdfDocument.close();
-    }
 
     private void filteredScore(ArrayList<ScoreInfo> filtered) {
         listViewModel = new ScoreStudentAdapter(this, R.layout.activity_score_student_element, filtered);

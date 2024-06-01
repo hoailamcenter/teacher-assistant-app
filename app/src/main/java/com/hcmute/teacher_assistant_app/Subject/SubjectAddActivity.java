@@ -117,13 +117,15 @@ public class SubjectAddActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // Get the current text from the subject name EditText
                 String tenMH = txt_tenMH.getText().toString();
+                // Check if the name is empty or contains digits
                 if (tenMH.isEmpty() || tenMH.matches(".*\\d.*")) {
-                    isError = true;
-                    errorName.setVisibility(View.VISIBLE);
+                    isError = true;// Set error flag to true
+                    errorName.setVisibility(View.VISIBLE);// Show error icon for name
                 } else {
-                    isError = false;
-                    errorName.setVisibility(View.INVISIBLE);
+                    isError = false;// Set error flag to false
+                    errorName.setVisibility(View.INVISIBLE);// Hide error icon for name
                 }
             }
 
@@ -142,13 +144,15 @@ public class SubjectAddActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // Get the current text from the coefficient EditText
                 String heSo = txt_heSo.getText().toString();
+                // Check if the coefficient is empty or greater than 2
                 if (heSo.isEmpty() || Integer.parseInt(heSo) > 2) {
                     isError = true;
-                    errorHS.setVisibility(View.VISIBLE);
+                    errorHS.setVisibility(View.VISIBLE); // Show error icon for coefficient
                 } else {
                     isError = false;
-                    errorHS.setVisibility(View.INVISIBLE);
+                    errorHS.setVisibility(View.INVISIBLE); // Hide error icon for coefficient
                 }
             }
 
@@ -200,13 +204,15 @@ public class SubjectAddActivity extends AppCompatActivity {
         cb_HK2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                // If both checkboxes are checked, uncheck the first one
                 if (cb_HK1.isChecked() && cb_HK2.isChecked()) cb_HK1.setChecked(false);
+                // If neither checkbox is checked, show error icon for semester
                 if (!cb_HK1.isChecked() && !cb_HK2.isChecked()) {
                     errorHK.setVisibility(View.VISIBLE);
-                    isError = true;
+                    isError = true; // Set error flag to true
                 } else {
-                    errorHK.setVisibility(View.INVISIBLE);
-                    isError = false;
+                    errorHK.setVisibility(View.INVISIBLE);// Hide error icon for semester
+                    isError = false; // Set error flag to false
                 }
             }
         });

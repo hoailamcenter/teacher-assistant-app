@@ -57,32 +57,34 @@ public class ClassroomCreationActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void openDatePicker(View view) {
+        // Listener to handle the date selection from the date picker dialog
         DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
-            month = month + 1;
-
+            month = month + 1;// Adjust month index since it's zero-based in DatePickerDialog
+            // Create Date object with selected year, month, and day
             Date date = new Date(year - 1900, month, day);
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
+            // Format the date and set it to the birthday TextView
             String birthdayValue = formatter.format(date);
             birthday.setText(birthdayValue);
         };
-
+        // Get the current year, month, and day from the calendar
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-
+        // Choose dialog theme based on night mode setting
         int style;
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             style = AlertDialog.THEME_DEVICE_DEFAULT_DARK;
         } else {
             style = AlertDialog.THEME_DEVICE_DEFAULT_LIGHT;
         }
-
+        // Create and show the date picker dialog with the specified theme and current date
         DatePickerDialog datePicker = new DatePickerDialog(this, style, dateSetListener, year, month, day);
         datePicker.show();
     }
 
     private void setEvent() {
+        // If the Android version is Oreo (API 26) or higher, set the onClickListener for the birthday field
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             this.birthday.setOnClickListener(this::openDatePicker);
         }
