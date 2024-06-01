@@ -49,22 +49,28 @@ public class GenderStatsActivity extends AppCompatActivity {
     }
 
     private void setupPieChart() {
-
-        List<DataEntry> data = new ArrayList<>();
+        // Retrieve gender statistics from the database
         this.reportTotals = this.studentOpenHelper.countByGender();
 
+        // Prepare data for the pie chart
+        List<DataEntry> data = new ArrayList<>();
         for (int i = 0; i < this.reportTotals.size(); i++) {
             data.add(new ValueDataEntry(this.reportTotals.get(i).getName(), this.reportTotals.get(i).getValue()));
         }
 
+        // Create a pie chart using AnyChart library
         Pie pie = AnyChart.pie();
 
+        // Set data to the pie chart
         pie.data(data);
+
+        // Customize pie chart appearance
         pie.palette(new String[]{"#ffcc80", "#aed581"});
         pie.title(this.statistic.getTitle());
         pie.labels().position("outside");
         pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
 
+        // Display the pie chart in AnyChartView
         this.anyChartView.setChart(pie);
     }
 }

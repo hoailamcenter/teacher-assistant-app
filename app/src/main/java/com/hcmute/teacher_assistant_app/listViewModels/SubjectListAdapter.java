@@ -27,6 +27,7 @@ public class SubjectListAdapter extends ArrayAdapter<Subject> {
     private int resource;
     private ArrayList<Subject> subjects;
 
+    // Constructor
     public SubjectListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Subject> subjects, Statistic statistic) {
         super(context, resource, subjects);
         this.context = context;
@@ -35,11 +36,13 @@ public class SubjectListAdapter extends ArrayAdapter<Subject> {
         this.statistic = statistic;
     }
 
+    // Get the number of items in the list
     @Override
     public int getCount() {
         return subjects.size();
     }
 
+    // Create and return the view for each item in the list
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
 
@@ -49,20 +52,24 @@ public class SubjectListAdapter extends ArrayAdapter<Subject> {
         TextView NKHK = convertView.findViewById(R.id.subjectNKHK);
         TextView heSo = convertView.findViewById(R.id.subjectHS);
 
+        // Get the subject at the specified position
         subject = subjects.get(position);
         String subject_name = subject.getTenMH();
-        String subject_NKHK = "Học kỳ: " + subject.getHocKy() + " Năm học: " + subject.getNamHoc();
-        String subject_hs = "Hệ số: " + subject.getHeSo();
+        String subject_NKHK = "Học kỳ: " + subject.getHocKy() + " Năm học: " + subject.getNamHoc();
+        String subject_hs = "Hệ số: " + subject.getHeSo();
 
+        // Set text for TextViews
         name.setText(subject_name);
         NKHK.setText(subject_NKHK);
         heSo.setText(subject_hs);
 
+        // Set click listener for the edit button
         btn_Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Subject subject = subjects.get(position);
 
+                // Navigate to the MarkStatsActivity with subject and statistic information
                 Intent intent = new Intent(context, MarkStatsActivity.class);
                 intent.putExtra("Subject", subject);
                 intent.putExtra("Statistic", statistic);

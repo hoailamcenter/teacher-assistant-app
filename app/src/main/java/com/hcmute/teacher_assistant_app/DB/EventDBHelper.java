@@ -35,7 +35,7 @@ public class EventDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase litedb, int oldVersion, int newVersiopn) {
 
     }
-
+    // Inserts a new event into the database. Returns true if successful, false otherwise.
     public boolean AddEvent(Event event) {
         Log.i(TAG, "ADD EVENT " + event.getNameEvent());
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -55,7 +55,7 @@ public class EventDBHelper extends SQLiteOpenHelper {
         }
 
     }
-
+    //default data
     public void createDefaultEvent() {
         Event event1 = new Event(0, "Họp phụ huynh tổng kết học kỳ", "07:00", "11:00", "15/04/2023", "Phòng học 305");
         Event event2 = new Event(0, "Hội trại 26-3", "07:00", "17:00", "26/03/2023", "Phòng học 305");
@@ -65,7 +65,7 @@ public class EventDBHelper extends SQLiteOpenHelper {
         this.AddEvent(event2);
         this.AddEvent(event3);
     }
-
+    //Retrieves all events from the database and returns them as an ArrayList
     public ArrayList<Event> getAllEvents() {
         Log.i(TAG, "getAllEvent ");
         ArrayList<Event> eventList = new ArrayList<Event>();

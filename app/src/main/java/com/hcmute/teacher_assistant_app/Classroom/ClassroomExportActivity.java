@@ -17,11 +17,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
-
 import com.hcmute.teacher_assistant_app.DB.StudentOpenHelper;
 import com.hcmute.teacher_assistant_app.R;
 import com.hcmute.teacher_assistant_app.models.Student;

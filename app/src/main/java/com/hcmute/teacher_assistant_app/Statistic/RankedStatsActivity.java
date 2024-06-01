@@ -62,8 +62,10 @@ public class RankedStatsActivity extends AppCompatActivity {
         List<DataEntry> dataEntries = new ArrayList<>();
         ArrayList<ReportScore> reportScores = db.getReportScore();
 
+        // Iterate over the predefined performance levels (e.g., Excellent, Good, Average, Poor)
         for (int i = 0; i < ranked.length; i++) {
             int count = 0;
+            // Count the number of students falling into each performance level
             for (int j = 0; j < reportScores.size(); j++) {
                 String pointRank = getXepLoai(reportScores.get(j).getDiem());
                 if (pointRank.equals(ranked[i])) {
@@ -71,24 +73,24 @@ public class RankedStatsActivity extends AppCompatActivity {
                 }
             }
 
+            // Add the count of students for each performance level to the data entries
             reportTotals.add(new ReportTotal(ranked[i], Double.valueOf(count)));
             dataEntries.add(new ValueDataEntry(ranked[i], count));
         }
 
-//        use the AnyChart library to create and configure a pie chart
-
-//        initializes a pie chart instance.
+        // Create a pie chart using the AnyChart library
         Pie pie = AnyChart.pie();
-
         pie.data(dataEntries);
         pie.palette(new String[]{"#61CDBB", "#E8A838", "#DC143C", "#473F97"});
         pie.title(statistic.getTitle());
         pie.labels().position("outside");
         pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
 
+        // Display the pie chart in the AnyChartView
         anyChartView.setChart(pie);
     }
 
+    // Determine the performance level based on the score
     private String getXepLoai(Double diem) {
         if (diem >= 8) {
             return "Giỏi";

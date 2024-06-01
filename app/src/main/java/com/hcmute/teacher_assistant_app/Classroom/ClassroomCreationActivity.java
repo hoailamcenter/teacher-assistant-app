@@ -9,17 +9,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
-
-
 import com.hcmute.teacher_assistant_app.R;
 import com.hcmute.teacher_assistant_app.models.Session;
 import com.hcmute.teacher_assistant_app.models.Student;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,7 +41,7 @@ public class ClassroomCreationActivity extends AppCompatActivity {
         setControl();
         setEvent();
 
-        this.birthday.setText("14/07/2001");
+        this.birthday.setText("25/10/2003");
     }
 
     private void setControl() {
@@ -112,9 +108,10 @@ public class ClassroomCreationActivity extends AppCompatActivity {
         this.buttonCancel.setOnClickListener(view -> finish());
     }
 
+    //This method checks if the student's family name and first name contain valid characters, and if the student's age is at least 18 years old.
     private boolean validateStudentInformation(Student student) {
         String VIETNAMESE_DIACRITIC_CHARACTERS = "ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ" + "áảấẩắẳóỏốổớởíỉýỷéẻếểạậặọộợịỵẹệãẫẵõỗỡĩỹẽễàầằòồờìỳèềaâăoôơiyeêùừụựúứủửũữuư";
-
+        //A regular expression pattern is used to match Vietnamese diacritic characters and Latin letters.
         Pattern pattern = Pattern.compile("(?:[" + VIETNAMESE_DIACRITIC_CHARACTERS + "]|[a-zA-Z])++");
 
         boolean flagFamilyName = pattern.matcher(student.getFamilyName()).matches();

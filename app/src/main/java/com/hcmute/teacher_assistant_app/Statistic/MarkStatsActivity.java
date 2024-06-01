@@ -54,23 +54,26 @@ public class MarkStatsActivity extends AppCompatActivity {
     }
 
     private void setupChart() {
+        // Retrieve report totals for the subject from the database
         this.reportTotals = this.db.getReportCountByScore(this.subject.getMaMH());
 
+        // Prepare data for the column chart
         List<DataEntry> data = new ArrayList<>();
         for (int i = 0; i < this.reportTotals.size(); i++) {
             data.add(new ValueDataEntry(this.reportTotals.get(i).getName(), this.reportTotals.get(i).getValue()));
         }
 
+        // Create a column chart using AnyChart library
         Cartesian cartesian = AnyChart.column();
         Column column = cartesian.column(data);
 
+        // Customize column chart appearance
         column.tooltip().titleFormat("Điểm: {%X}").position(Position.CENTER_BOTTOM).anchor(Anchor.CENTER_BOTTOM).offsetX(0d).offsetY(5d).format("Số lượng: {%Value}");
-
         cartesian.animation(true);
-
         cartesian.xAxis(0).title("Điểm");
         cartesian.yAxis(0).title("Số lượng");
 
+        // Display the column chart in AnyChartView
         this.anyChartView.setChart(cartesian);
     }
 }

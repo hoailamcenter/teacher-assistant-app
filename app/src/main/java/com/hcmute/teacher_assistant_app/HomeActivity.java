@@ -16,7 +16,7 @@ import com.hcmute.teacher_assistant_app.Subject.SubjectActivity;
 
 
 public class HomeActivity extends AppCompatActivity {
-    ImageButton btnStatistic, btnClassroom, btnSubject, btnEvent, btnScore, btnAccount;
+    ImageButton btnStatistic, btnClassroom, btnSubject, btnEvent, btnScore, btnAccount, btnDocument;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         this.btnEvent = findViewById(R.id.btnHomeEvent);
         this.btnScore = findViewById(R.id.btnHomeScore);
         this.btnAccount = findViewById(R.id.btnHomeAccount);
+        this.btnDocument = findViewById(R.id.btnDocumentScanner);
     }
 
     @SuppressLint("RestrictedApi")
@@ -88,6 +89,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, SettingsAccountActivity.class);
+                startActivity(intent);
+            }
+        });
+        // 6. Document
+        this.btnDocument.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, SplashActivity.class);
                 startActivity(intent);
             }
         });

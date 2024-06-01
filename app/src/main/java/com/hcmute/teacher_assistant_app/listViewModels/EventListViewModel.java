@@ -23,16 +23,7 @@ public class EventListViewModel extends ArrayAdapter<Event> {
     private ArrayList<Event> events;
     private OnEvent onEvent;
 
-    public void UpdateItem(Event ev, int Position) {
-        events.set(Position, ev);
-        notifyDataSetChanged();
-    }
-
-    public void DeleteItem(Event ev, int Position) {
-        events.remove(Position);
-        notifyDataSetChanged();
-    }
-
+    // Constructor
     public EventListViewModel(@NonNull Context context, int resource, @NonNull ArrayList<Event> events, OnEvent onEvent) {
         super(context, resource, events);
         this.context = context;
@@ -41,6 +32,19 @@ public class EventListViewModel extends ArrayAdapter<Event> {
         this.onEvent = onEvent;
     }
 
+    // Method to update an item in the list
+    public void UpdateItem(Event ev, int Position) {
+        events.set(Position, ev);
+        notifyDataSetChanged();
+    }
+
+    // Method to delete an item from the list
+    public void DeleteItem(Event ev, int Position) {
+        events.remove(Position);
+        notifyDataSetChanged();
+    }
+
+    // Returns the size of the list
     public int count() {
         return events.size();
     }
@@ -48,27 +52,30 @@ public class EventListViewModel extends ArrayAdapter<Event> {
     @NonNull
     @Override
     public View getView(int position, @NonNull View convertView, @NonNull ViewGroup parent) {
-        // array list => element    - position = index.    => lấy 1 thằng đổ dữ liệu ra 1 layout -> trả về listview
+        // Inflate the layout for each row of the ListView
         convertView = LayoutInflater.from(context).inflate(resource, null);
 
-        /*Step 1*/
+        // Find views in the layout
         TextView name = convertView.findViewById(R.id.eventName);
         TextView datetime = convertView.findViewById(R.id.eventDateTime);
         TextView place = convertView.findViewById(R.id.eventPlace);
         ImageView btn_edit = convertView.findViewById(R.id.btn_edit);
         ImageView btn_delete = convertView.findViewById(R.id.btn_delete);
 
-        /*Step 2*/
+        // Get the Event object at the specified position
         Event event = events.get(position);
+
+        // Extract data from the Event object
         String eventName = event.getNameEvent();
         String eventDateTime = event.getStartTime() + "-" + event.getEndTime() + " " + event.getDay();
         String eventPlace = event.getPlace();
 
-        /*Step 3*/
+        // Set data to the views
         name.setText(eventName);
         datetime.setText(eventDateTime);
         place.setText(eventPlace);
 
+        // Set click listener for the edit button
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,10 +83,11 @@ public class EventListViewModel extends ArrayAdapter<Event> {
             }
         });
 
-        // Thông báo xóa
+        // Alert for deletion
         Alert alert = new Alert(context);
         alert.confirm();
 
+        // Set click listener for the delete button
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +95,7 @@ public class EventListViewModel extends ArrayAdapter<Event> {
             }
         });
 
+        // Handle delete confirmation
         alert.btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

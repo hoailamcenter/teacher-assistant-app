@@ -43,6 +43,7 @@ public class SubjectListActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
+        // Initialize the SubjectListAdapter and set it to the ListView
         this.subjectListAdapter = new SubjectListAdapter(this, R.layout.statistic_subject_element, subjects, statistic);
         this.listView.setAdapter(this.subjectListAdapter);
     }
@@ -57,6 +58,7 @@ public class SubjectListActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                // Filter subjects based on the search query and update the ListView
                 ArrayList<Subject> filteredSubject = new ArrayList<Subject>();
 
                 for (Subject subject : subjects) {
@@ -72,10 +74,12 @@ public class SubjectListActivity extends AppCompatActivity {
     }
 
     private void setFilteredSubject(ArrayList<Subject> filtered) {
+        // Update the ListView with the filtered list of subjects
         SubjectListAdapter subjectAdapter = new SubjectListAdapter(this, R.layout.statistic_subject_element, filtered, statistic);
         this.listView.setAdapter(subjectAdapter);
     }
 
+    // Method to get the instance of this activity
     public static SubjectListActivity getmInstanceActivity() {
         return weakActivity.get();
     }

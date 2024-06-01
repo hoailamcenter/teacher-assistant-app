@@ -26,6 +26,7 @@ public class StatisticListViewModel extends ArrayAdapter<Statistic> {
     private int resource;
     private ArrayList<Statistic> statistics;
 
+    // Constructor
     public StatisticListViewModel(@NonNull Context context, int resource, @NonNull ArrayList<Statistic> statistics) {
         super(context, resource, statistics);
         this.context = context;
@@ -33,27 +34,34 @@ public class StatisticListViewModel extends ArrayAdapter<Statistic> {
         this.statistics = statistics;
     }
 
+    // Method to get the number of items in the list
     public int count() {
         return statistics.size();
     }
 
+    // Method to create and return the view for each item in the list
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
 
+        // Initialize views
         TextView title = convertView.findViewById(R.id.titleStatistic);
         TextView text = convertView.findViewById(R.id.textStatistic);
         ImageButton btnEdit = convertView.findViewById(R.id.btnEdit);
 
+        // Get Statistic object at the specified position
         Statistic statistic = statistics.get(position);
 
+        // Set text for title and text views
         title.setText(statistic.getTitle());
         text.setText(statistic.getText());
 
+        // Set click listener for the edit button
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Handle different actions based on the statistic ID
                 switch (statistic.getId()) {
                     case 1:
                         Intent intent1 = new Intent(context, RankedStatsActivity.class);

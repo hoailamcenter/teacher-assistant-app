@@ -56,12 +56,12 @@ public class SubjectDBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
-
+    // Method to update an existing subject record
     public boolean update(Subject subject) {
-        /*Step 1*/
+        // Step 1: Get writable database
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
-        /*Step 2*/
+        // Step 2: Extract subject details
         int id = subject.getMaMH();
 
         String tenMH = subject.getTenMH();
@@ -69,14 +69,14 @@ public class SubjectDBHelper extends SQLiteOpenHelper {
         int heSo = subject.getHeSo();
         String namHoc = subject.getNamHoc();
 
-        /*Step 3*/
+        // Step 3: Put subject details into ContentValues
         ContentValues values = new ContentValues();
         values.put(COLUMN_tenmh, tenMH);
         values.put(COLUMN_hocky, hocKy);
         values.put(COLUMN_heso, heSo);
         values.put(COLUMN_namhoc, namHoc);
 
-        /*Step 4*/
+        // Step 4: Update database
         try {
             sqLiteDatabase.update(TABLE_NAME, values, COLUMN_mamh + " = ?", new String[]{String.valueOf(id)});
             return true;
@@ -86,11 +86,13 @@ public class SubjectDBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // Method to delete a subject record
     public boolean deleteSubject(Subject subject) {
         try {
+            // Step 1: Get subject ID and writable database
             int id = subject.getMaMH();
             SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-
+            // Step 2: Delete subject from database
             sqLiteDatabase.delete(TABLE_NAME, COLUMN_mamh + " = ?", new String[]{String.valueOf(id)});
             sqLiteDatabase.close();
             return true;
@@ -112,6 +114,7 @@ public class SubjectDBHelper extends SQLiteOpenHelper {
         this.AddSubject(subject3);
     }
 
+    // Method to retrieve all subject records
     public ArrayList<Subject> getAllSubjects() {
         Log.i(TAG, "SubjectDBHelper.getAllTeachers ... ");
 

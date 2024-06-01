@@ -14,29 +14,34 @@ import com.hcmute.teacher_assistant_app.models.Score;
 import java.util.ArrayList;
 
 public class ScoreDBHelper extends SQLiteOpenHelper {
+    // Database table and column names
     public static final String TABLE_NAME = "SCORES";
     public static final String TAG = "SCORE SQLite";
-    public static final String COLUMN_mahs = "MAHS";
-    public static final String COLUMN_mamh = "MAMH";
-    public static final String COLUMN_diem = "DIEM";
+    public static final String COLUMN_mahs = "MAHS"; // Student ID
+    public static final String COLUMN_mamh = "MAMH"; // Subject ID
+    public static final String COLUMN_diem = "DIEM"; // Score
 
+    // Constructor
     public ScoreDBHelper(Context context) {
         super(context, DBConfig.getDatabaseName(), null, DBConfig.getDatabaseVersion());
     }
 
+    // Called when the database is created for the first time
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = String.format("CREATE TABLE %s ( %s INTEGER, %s INTEGER , %s REAL  )", TABLE_NAME, COLUMN_mahs, COLUMN_mamh, COLUMN_diem);
         db.execSQL(CREATE_TABLE);
     }
 
+    // Called when the database needs to be upgraded
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
-
+    // Add a new score to the database
     public void add(Score score) {
         Log.i(TAG, "AddScore HS:" + score.getMaHS() + "|| MH: " + score.getMaMH());
         SQLiteDatabase db = this.getWritableDatabase();
+        // Prepare values to insert
         ContentValues values = new ContentValues();
         values.put(COLUMN_mahs, score.getMaHS());
         values.put(COLUMN_mamh, score.getMaMH());
@@ -45,6 +50,7 @@ public class ScoreDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Update an existing score in the database
     public void update(int student, int subject, double score) {
         // calling a method to get writable database.
         SQLiteDatabase db = this.getWritableDatabase();
@@ -62,6 +68,7 @@ public class ScoreDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Retrieve all scores from the database
     public ArrayList<Score> getAll() {
         ArrayList<Score> scores = new ArrayList<>();
 
@@ -89,7 +96,7 @@ public class ScoreDBHelper extends SQLiteOpenHelper {
         return scores;
     }
 
-    // get tất cả điểm theo mã sv và mã mh
+    // Retrieve scores for a specific student and subject
     public ArrayList<Score> getStudentAndSubject(String studentId, String maMH) {
         ArrayList<Score> scores = new ArrayList<>();
 
@@ -117,7 +124,7 @@ public class ScoreDBHelper extends SQLiteOpenHelper {
         return scores;
     }
 
-    //
+    // Generate a report of average scores for all students
     public ArrayList<ReportScore> getReportScore() {
         ArrayList<ReportScore> reportScores = new ArrayList<>();
         // Select All Query
@@ -145,6 +152,7 @@ public class ScoreDBHelper extends SQLiteOpenHelper {
         return reportScores;
     }
 
+    // Generate a report of the count of students with specific scores in a subject
     public ArrayList<ReportTotal> getReportCountByScore(int MAMH) {
         ArrayList<ReportTotal> reportTotals = new ArrayList<>();
 

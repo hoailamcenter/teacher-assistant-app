@@ -7,11 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
-
 import com.hcmute.teacher_assistant_app.models.Grade;
-
 import java.util.ArrayList;
 
 

@@ -28,6 +28,7 @@ public class SubjectAdapter extends ArrayAdapter<Subject> {
     private int resource;
     private ArrayList<Subject> data;
 
+    // Constructor
     public SubjectAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Subject> data) {
         super(context, resource, data);
         this.context = context;
@@ -35,26 +36,32 @@ public class SubjectAdapter extends ArrayAdapter<Subject> {
         this.data = data;
     }
 
+    // Method to get the number of items in the list
     @Override
     public int getCount() {
         return data.size();
     }
 
+    // Method to create and return the view for each item in the list
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
 
+        // Initialize edit and delete buttons
         this.btn_Edit = convertView.findViewById(R.id.btn_edit);
         this.btn_Delete = convertView.findViewById(R.id.btn_delete);
 
+        // Find TextViews
         TextView name = convertView.findViewById(R.id.subjectName);
         TextView NKHK = convertView.findViewById(R.id.subjectNKHK);
         TextView heSo = convertView.findViewById(R.id.subjectHS);
 
+        // Get the Subject object at the specified position
         this.subject = this.data.get(position);
         String subject_name = this.subject.getTenMH();
-        String subject_NKHK = "Học kỳ: " + this.subject.getHocKy() + " Năm học: " + this.subject.getNamHoc();
-        String subject_hs = "Hệ số: " + this.subject.getHeSo();
+        String subject_NKHK = "Học kỳ: " + this.subject.getHocKy() + " Năm học: " + this.subject.getNamHoc();
+        String subject_hs = "Hệ số: " + this.subject.getHeSo();
 
+        // Set click listener for the edit button
         this.btn_Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +72,7 @@ public class SubjectAdapter extends ArrayAdapter<Subject> {
             }
         });
 
+        // Set click listener for the delete button
         this.btn_Delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +81,7 @@ public class SubjectAdapter extends ArrayAdapter<Subject> {
                 alert.confirm();
                 alert.showAlert("Bạn có muốn xóa môn:\n" + subject1.getTenMH(), R.drawable.info_icon);
 
+                // Handle delete confirmation
                 alert.btnOK.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -91,13 +100,11 @@ public class SubjectAdapter extends ArrayAdapter<Subject> {
             }
         });
 
+        // Set text for TextViews
         name.setText(subject_name);
         NKHK.setText(subject_NKHK);
         heSo.setText(subject_hs);
 
         return convertView;
-    }
-
-    public void setEvent() {
     }
 }
