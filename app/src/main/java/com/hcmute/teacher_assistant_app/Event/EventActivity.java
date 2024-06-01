@@ -17,7 +17,7 @@ import com.hcmute.teacher_assistant_app.models.Event;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-
+//Nguyen Dinh Minh Chien-21110756
 public class EventActivity extends AppCompatActivity implements OnEvent {
     public static WeakReference<EventActivity> weakReference;
     private ListView listViewEvent;

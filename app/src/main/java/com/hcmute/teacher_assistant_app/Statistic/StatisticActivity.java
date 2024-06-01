@@ -10,7 +10,7 @@ import com.hcmute.teacher_assistant_app.listViewModels.StatisticListViewModel;
 import com.hcmute.teacher_assistant_app.models.Statistic;
 
 import java.util.ArrayList;
-
+//Nguyễn Hoài Lâm_21110778
 public class StatisticActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayList<Statistic> statistics = new ArrayList<>();

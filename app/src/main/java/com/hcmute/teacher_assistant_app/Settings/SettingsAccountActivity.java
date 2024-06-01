@@ -18,7 +18,7 @@ import com.hcmute.teacher_assistant_app.TopBarMenuIconFragment;
 import com.hcmute.teacher_assistant_app.helpers.InterfaceHelper;
 import com.hcmute.teacher_assistant_app.models.Session;
 import com.hcmute.teacher_assistant_app.models.Teacher;
-
+//Nguyễn Hoài Lâm_21110778
 public class SettingsAccountActivity extends AppCompatActivity {
     private LinearLayout nameLinearLayout, passwordLinearLayout;
     private Session session;

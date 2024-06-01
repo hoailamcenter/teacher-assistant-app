@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.TabHost;
 
 import com.hcmute.teacher_assistant_app.R;
-
+//Nguyễn Hoài Lâm_21110778
 public class SettingsActivity extends TabActivity {
     private TabHost tabHost;
 

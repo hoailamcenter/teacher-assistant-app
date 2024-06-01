@@ -14,7 +14,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.hcmute.teacher_assistant_app.R;
 import com.hcmute.teacher_assistant_app.models.Subject;
-
+//Nguyễn Ngọc Minh_21110784
 public class SubjectAddActivity extends AppCompatActivity {
     private EditText txt_tenMH, txt_heSo, txt_namHoc;
     private CheckBox cb_HK1, cb_HK2;

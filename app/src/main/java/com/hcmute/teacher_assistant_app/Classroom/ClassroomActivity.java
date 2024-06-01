@@ -19,7 +19,7 @@ import com.hcmute.teacher_assistant_app.models.Student;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Locale;
-
+//Nguyen Dinh Minh Chien-21110756
 public class ClassroomActivity extends AppCompatActivity {
     public static WeakReference<ClassroomActivity> weakActivity;
     private ClassroomListViewModel listViewModel;

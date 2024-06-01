@@ -14,7 +14,7 @@ import com.hcmute.teacher_assistant_app.helpers.Alert;
 import com.hcmute.teacher_assistant_app.models.Student;
 
 import java.lang.ref.WeakReference;
-
+//Nguyen Dinh Minh Chien-21110756
 public class ClassroomIndividualActivity extends AppCompatActivity {
 
     public static WeakReference<ClassroomIndividualActivity> weakActivity;

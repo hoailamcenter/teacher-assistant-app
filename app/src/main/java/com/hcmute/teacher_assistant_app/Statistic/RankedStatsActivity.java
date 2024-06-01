@@ -19,7 +19,7 @@ import com.hcmute.teacher_assistant_app.models.Statistic;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//Nguyễn Hoài Lâm_21110778
 public class RankedStatsActivity extends AppCompatActivity {
     private TextView title;
     private Statistic statistic;

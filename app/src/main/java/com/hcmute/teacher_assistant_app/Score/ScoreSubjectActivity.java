@@ -9,7 +9,7 @@ import com.hcmute.teacher_assistant_app.listViewModels.ScoreSubjectAdapter;
 import com.hcmute.teacher_assistant_app.models.Subject;
 import com.hcmute.teacher_assistant_app.DB.SubjectDBHelper;
 import java.util.ArrayList;
-
+//Nguyễn Ngọc Minh_21110784
 public class ScoreSubjectActivity extends AppCompatActivity {
     private SearchView scoreSearch;
     private ListView listView;

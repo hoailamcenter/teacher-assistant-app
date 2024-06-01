@@ -14,7 +14,7 @@ import com.hcmute.teacher_assistant_app.DB.EventDBHelper;
 import com.hcmute.teacher_assistant_app.R;
 import com.hcmute.teacher_assistant_app.models.Event;
 
-
+//Nguyen Dinh Minh Chien-21110756
 public class EventActivityUpdate extends AppCompatActivity {
     private Event event; // Event object to be updated
     private EditText NameEv, StartEv, EndEV, DateEv, PlaceEV; // EditText fields for event details

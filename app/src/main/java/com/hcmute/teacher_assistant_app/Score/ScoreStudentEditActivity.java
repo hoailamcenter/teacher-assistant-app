@@ -17,7 +17,7 @@ import com.hcmute.teacher_assistant_app.models.ScoreInfo;
 import com.hcmute.teacher_assistant_app.models.Session;
 
 
-
+//Nguyễn Ngọc Minh_21110784
 public class ScoreStudentEditActivity extends AppCompatActivity {
     private Session session;
     private ScoreInfo score;

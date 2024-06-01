@@ -29,7 +29,7 @@ import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
 import java.util.ArrayList;
 import java.util.Locale;
-
+//Nguyễn Hoài Lâm_21110778
 public class TranslateActivity extends AppCompatActivity implements View.OnClickListener {
     // Declare UI components and translator objects
     EditText et_1;  // EditText for user input

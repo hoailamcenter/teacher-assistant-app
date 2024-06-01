@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.hcmute.teacher_assistant_app.R;
-
+//Nguyễn Hoài Lâm_21110778
 public class SettingsApplicationActivity extends AppCompatActivity {
     private SwitchCompat switchButton;
 

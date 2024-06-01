@@ -30,7 +30,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-
+//Nguyễn Ngọc Minh_21110784
 public class ScoreStudentActivity extends AppCompatActivity {
     Session session;
     private int pageHeight = 1120;

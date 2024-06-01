@@ -21,7 +21,7 @@ import com.hcmute.teacher_assistant_app.models.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//Nguyễn Hoài Lâm_21110778
 public class MarkStatsActivity extends AppCompatActivity {
     private TextView title;
     private Statistic statistic;

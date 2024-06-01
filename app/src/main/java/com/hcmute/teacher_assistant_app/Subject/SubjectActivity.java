@@ -18,7 +18,7 @@ import com.hcmute.teacher_assistant_app.models.Subject;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-
+//Nguyễn Ngọc Minh_21110784
 public class SubjectActivity extends AppCompatActivity {
     public static WeakReference<SubjectActivity> weakActivity;
 

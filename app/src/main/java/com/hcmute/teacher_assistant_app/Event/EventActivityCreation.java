@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.hcmute.teacher_assistant_app.R;
 import com.hcmute.teacher_assistant_app.models.Event;
 
-
+//Nguyen Dinh Minh Chien-21110756
 public class EventActivityCreation extends AppCompatActivity {
     private Button saveEvent; // Button to save the event
     private Button troVeBT; // Button to go back without saving
